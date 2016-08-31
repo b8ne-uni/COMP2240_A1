@@ -15,7 +15,12 @@ public class FBScheduler extends Scheduler {
 
     @Override
     public void onStart() {
+        System.out.println("Starting Feedback");
+    }
 
+    @Override
+    public void onStop() {
+        System.out.println("Finished Feedback");
     }
 
     @Override

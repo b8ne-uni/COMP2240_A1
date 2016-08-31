@@ -23,7 +23,12 @@ public class FCFSScheduler extends Scheduler {
 
     @Override
     public void onStart() {
-        System.out.println("Starting FCFS");
+        System.out.println("\nStarting FCFS\n");
+    }
+
+    @Override
+    public void onStop() {
+        System.out.println("\nFinished FCFS\n");
     }
 
     @Override

@@ -1,5 +1,11 @@
+package Simulator;
 
-import java.io.*;
+import Dispatcher.Dispatcher;
+import Scheduler.Process;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -7,17 +13,17 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import Scheduler.Process;
-import Dispatcher.Dispatcher;
 
 /**
  * Created by ben on 23/08/2016.
  */
 
 public class ProcessSimulator {
-    private static String inputFile;
     private LinkedList<Process> processList;
     private Dispatcher dispatcher;
+
+    private static String INPUT_FILE;
+    public static BufferedWriter OUTPUT_FILE;
 
     private void run() {
         // Init Processes and dispatcher
@@ -27,10 +33,19 @@ public class ProcessSimulator {
         // Begin by reading in processes from supplied file
         System.out.println("Reading in input file...");
 
-        // Alter input to Project path
-        inputFile = "./out/production/A1/" + inputFile;
+        // Setup Output file
         try {
-            String input = readFile(inputFile, StandardCharsets.UTF_8);
+            String strippedName = INPUT_FILE.substring(0, INPUT_FILE.lastIndexOf("."));
+            OUTPUT_FILE = new BufferedWriter(new FileWriter("./out/production/A1/" + strippedName + "_output.txt"));
+        } catch (IOException ex) {
+            System.out.println("Unable to generate output file.");
+        }
+
+        // Alter input to Project path
+        // @TODO: This is for intelliJ, check in terminal
+        INPUT_FILE = "./out/production/A1/" + INPUT_FILE;
+        try {
+            String input = readFile(INPUT_FILE, StandardCharsets.UTF_8);
             // Setup Pattern and Matcher
             // Dispatcher
             String exp = "DISP:[\\s]+(?<DISP>[\\d]+)";
@@ -91,7 +106,7 @@ public class ProcessSimulator {
             System.out.println("Error: No input file provided.");
         } else {
             for (String s : args) {
-                inputFile = s;
+                INPUT_FILE = s;
             }
 
             // Run the dispatcher

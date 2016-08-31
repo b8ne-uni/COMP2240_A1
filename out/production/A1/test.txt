@@ -1,6 +1,6 @@
 BEGIN
 
-DISP: 5
+DISP: 1
 END
 
 ID: p1

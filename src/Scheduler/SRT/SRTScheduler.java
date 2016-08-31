@@ -15,7 +15,12 @@ public class SRTScheduler extends Scheduler {
 
     @Override
     public void onStart() {
+        System.out.println("Starting SRT");
+    }
 
+    @Override
+    public void onStop() {
+        System.out.println("Finished SRT");
     }
 
     @Override
