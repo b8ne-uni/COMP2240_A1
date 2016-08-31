@@ -8,25 +8,21 @@ public class Process {
     private String id;
     private int arriveTime;
     private int execSize;
-    // Calc vars
+    private int startTime;
+    private int exitTime;
     private int runningTime;
-    private int waitTime;
-    private int timeToFinish;
-    private int turnAroundTime;
-
 
     public Process(String id, int arriveTime, int execSize) {
-        this(id, arriveTime, execSize, 0, 0, 0, 0);
+        this(id, arriveTime, execSize, 0, 0, 0);
     }
 
-    public Process(String id, int arriveTime, int execSize, int runningTime, int waitTime, int timeToFinish, int turnAroundTime) {
+    public Process(String id, int arriveTime, int execSize, int exitTime, int runningTime, int startTime) {
         this.id = id;
         this.arriveTime = arriveTime;
         this.execSize = execSize;
+        this.exitTime = exitTime;
         this.runningTime = runningTime;
-        this.waitTime = waitTime;
-        this.timeToFinish = timeToFinish;
-        this.turnAroundTime = turnAroundTime;
+        this.startTime = startTime;
     }
 
     public String getId() {
@@ -51,5 +47,29 @@ public class Process {
 
     public void setExecSize(int execSize) {
         this.execSize = execSize;
+    }
+
+    public int getExitTime() {
+        return exitTime;
+    }
+
+    public void setExitTime(int exitTime) {
+        this.exitTime = exitTime;
+    }
+
+    public int getRunningTime() {
+        return runningTime;
+    }
+
+    public void setRunningTime(int runningTime) {
+        this.runningTime = runningTime;
+    }
+
+    public int getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(int startTime) {
+        this.startTime = startTime;
     }
 }
