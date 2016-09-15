@@ -1,0 +1,37 @@
+
+
+FCFS:
+
+Process    Waiting Time    Turnaround Time
+
+
+
+RR:
+
+Process    Waiting Time    Turnaround Time
+
+
+
+SRT:
+
+Process    Waiting Time    Turnaround Time
+
+
+
+FB:
+
+Process    Waiting Time    Turnaround Time
+
+
+
+NRR:
+
+Process    Waiting Time    Turnaround Time
+
+Summary
+Algorithm   Average Waiting Time   Average Turnaround Time
+FCFS:                        NaN                       NaN
+RR:                          NaN                       NaN
+SRT:                         NaN                       NaN
+FB:                          NaN                       NaN
+NRR:                         NaN                       NaN

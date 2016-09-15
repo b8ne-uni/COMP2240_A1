@@ -3,15 +3,24 @@ package Scheduler.FCFS;
 import Dispatcher.Dispatcher;
 import Scheduler.Scheduler;
 import Scheduler.Process;
-
 import java.util.ArrayDeque;
 
 /**
- * Created by ben on 24/08/2016.
+ * Institution: University of Newcastle
+ * Programmer:  Ben Sutter
+ * Course Code: COMP2240
+ * UID: 3063467
+ * Assignment 1
+ * FCFS Algorithm
+ * FCFSScheduler.java
+ * Last Modified: 01/09/2016
  */
 public class FCFSScheduler extends Scheduler {
     private ArrayDeque<Process> readyQueue;
 
+    /**
+     * Constructor
+     */
     public FCFSScheduler() {
         this.readyQueue = new ArrayDeque<>();
     }
@@ -19,16 +28,6 @@ public class FCFSScheduler extends Scheduler {
     @Override
     public String schedulerName() {
         return "FCFS:";
-    }
-
-    @Override
-    public void onStart() {
-        System.out.println("\nStarting FCFS\n");
-    }
-
-    @Override
-    public void onStop() {
-        System.out.println("\nFinished FCFS\n");
     }
 
     @Override
@@ -47,16 +46,30 @@ public class FCFSScheduler extends Scheduler {
 
                 // Clear current process
                 currentProcess = null;
+                this.dispFlag = true;
             }
         }
 
-        // Start a new process if none are running
-        if (currentProcess == null && !readyQueue.isEmpty()) {
-            currentProcess = readyQueue.removeFirst();
-            // Increment tick one(1) to account for dispatcher time
-            this.setCurrentTick(this.getCurrentTick() + Dispatcher.DISPATCH_TIME);
-            // Set start time after this increment, as thats when it will start
-            currentProcess.setStartTime(this.getCurrentTick());
+        // Check Dispatcher Flag
+        if (this.dispFlag && currentProcess == null) {
+            // Skip this tick
+            this.remainingDispTime--;
+            if (remainingDispTime == 0) {
+                this.dispFlag = false;
+                this.remainingDispTime = Dispatcher.DISPATCH_TIME;
+            }
+        } else {
+            // Start a new process if none are running
+            if (currentProcess == null && !readyQueue.isEmpty()) {
+                // Load in next process
+                currentProcess = readyQueue.removeFirst();
+
+                // Set start time after this increment, as thats when it will start
+                currentProcess.setStartTime(this.getCurrentTick());
+
+                // Print this process entry
+                loadProcess(currentProcess);
+            }
         }
     }
 

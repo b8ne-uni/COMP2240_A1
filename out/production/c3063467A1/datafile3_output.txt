@@ -1,0 +1,117 @@
+
+
+FCFS:
+T1:   A1
+T12:  B2
+T42:  C3
+T46:  D4
+T54:  E5
+
+Process    Waiting Time    Turnaround Time
+A1                    1                 11
+B2                   11                 40
+C3                   40                 43
+D4                   43                 50
+E5                   50                 62
+
+
+
+RR:
+T1:   A1
+T6:   B2
+T11:  C3
+T15:  D4
+T20:  E5
+T25:  A1
+T30:  B2
+T35:  D4
+T39:  E5
+T44:  A1
+T47:  B2
+T52:  E5
+T57:  B2
+
+Process    Waiting Time    Turnaround Time
+A1                   36                 46
+B2                   44                 73
+C3                    9                 12
+D4                   28                 35
+E5                   40                 52
+
+
+
+SRT:
+T1:   A1
+T3:   C3
+T7:   D4
+T15:  A1
+T25:  E5
+T38:  B2
+
+Process    Waiting Time    Turnaround Time
+A1                   14                 24
+B2                   37                 66
+C3                    1                  4
+D4                    4                 11
+E5                   21                 33
+
+
+
+FB:
+T1:   A1
+T6:   B2
+T11:  C3
+T15:  D4
+T20:  E5
+T25:  A1
+T30:  B2
+T35:  D4
+T39:  E5
+T44:  A1
+T47:  B2
+T52:  E5
+T57:  B2
+
+Process    Waiting Time    Turnaround Time
+A1                   36                 46
+B2                   44                 73
+C3                    9                 12
+D4                   28                 35
+E5                   40                 52
+
+
+
+NRR:
+T1:   A1
+T6:   B2
+T11:  C3
+T15:  D4
+T20:  E5
+T25:  A1
+T29:  B2
+T33:  D4
+T37:  E5
+T41:  A1
+T44:  B2
+T47:  E5
+T50:  A1
+T52:  B2
+T55:  E5
+T58:  B2
+T61:  E5
+T63:  B2
+
+Process    Waiting Time    Turnaround Time
+A1                   41                 51
+B2                   49                 78
+C3                    9                 12
+D4                   26                 33
+E5                   46                 58
+
+Summary
+Algorithm   Average Waiting Time   Average Turnaround Time
+FCFS:                      29.00                     41.20
+RR:                        31.40                     43.60
+SRT:                       15.40                     27.60
+FB:                        31.40                     43.60
+NRR:                       34.20                     46.40

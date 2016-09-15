@@ -15,9 +15,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by ben on 23/08/2016.
+ * Institution: University of Newcastle
+ * Programmer:  Ben Sutter
+ * Course Code: COMP2240
+ * UID: 3063467
+ * Assignment 1
+ * ProcessSimulator Class
+ * ProcessSimulator.java
+ * Last Modified: 01/09/2016
  */
-
 public class ProcessSimulator {
     private LinkedList<Process> processList;
     private Dispatcher dispatcher;
@@ -25,7 +31,13 @@ public class ProcessSimulator {
     private static String INPUT_FILE;
     public static BufferedWriter OUTPUT_FILE;
 
-    private void run() {
+    /**
+     * run()
+     * Main program interface
+     */
+    public void run(String in) {
+        this.INPUT_FILE = in;
+
         // Init Processes and dispatcher
         dispatcher = new Dispatcher();
         processList = new LinkedList<>();
@@ -36,14 +48,14 @@ public class ProcessSimulator {
         // Setup Output file
         try {
             String strippedName = INPUT_FILE.substring(0, INPUT_FILE.lastIndexOf("."));
-            OUTPUT_FILE = new BufferedWriter(new FileWriter("./out/production/A1/" + strippedName + "_output.txt"));
+            OUTPUT_FILE = new BufferedWriter(new FileWriter("./out/production/c3063467A1/" + strippedName + "_output.txt"));
         } catch (IOException ex) {
             System.out.println("Unable to generate output file.");
         }
 
         // Alter input to Project path
         // @TODO: This is for intelliJ, check in terminal
-        INPUT_FILE = "./out/production/A1/" + INPUT_FILE;
+        INPUT_FILE = "./out/production/c3063467A1/" + INPUT_FILE;
         try {
             String input = readFile(INPUT_FILE, StandardCharsets.UTF_8);
             // Setup Pattern and Matcher
@@ -94,24 +106,5 @@ public class ProcessSimulator {
     {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
         return new String(encoded, encoding);
-    }
-
-    /**
-     * Main Java entry point
-     * @param args
-     */
-    public static void main(String[] args) {
-        // Pull input param and store statically
-        if (args.length < 1) {
-            System.out.println("Error: No input file provided.");
-        } else {
-            for (String s : args) {
-                INPUT_FILE = s;
-            }
-
-            // Run the dispatcher
-            ProcessSimulator program = new ProcessSimulator();
-            program.run();
-        }
     }
 }
