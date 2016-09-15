@@ -65,7 +65,7 @@ public class ProcessSimulator {
             Matcher m = p.matcher(input);
 
             // Processes
-            String exp2 = "ID:[\\s]+(?<ID>[\\w]*)[\\s]Arrive:[\\s]+(?<Arrive>[\\d]+)[\\s]+ExecSize:[\\s]+(?<SIZE>[\\d]+)[\\s]+END";
+            String exp2 = "ID:[\\s]+(?<ID>[\\w]*)[\\s][\\r\\n]+Arrive:[\\s]+(?<Arrive>[\\d]+)[\\s][\\r\\n]+ExecSize:[\\s]+(?<SIZE>[\\d]+)[\\s][\\r\\n]+END";
             Pattern p2 = Pattern.compile(exp2);
             Matcher m2 = p2.matcher(input);
 
